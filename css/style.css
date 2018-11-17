@@ -15,6 +15,10 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 ul {
     margin: 0;
     padding: 0;
@@ -25,6 +29,55 @@ ul {
     width: 1010px;
     margin: 0 auto;
     padding: 0 15px;
+}
+
+.clear::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.invisLimk {
+    position: relative;
+    z-index: 1;
+}
+
+.invisLimk > a {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 7;
+    overflow: hidden;
+    text-indent: 200%;
+    white-space: nowrap;
+}
+
+header .table {
+    display: table;
+    width: 100%;
+}
+
+header .left,
+header .logo,
+header .right{
+    display: table-cell;
+    width: 33.33333%;
+    vertical-align: top;
+}
+
+header .logo {
+    text-align: center;
+}
+
+header .left {
+    text-align: left;
+}
+
+header .right {
+    text-align: right;
 }
 
 header .login {
@@ -39,19 +92,40 @@ header .menu a{
     color: #333333;
 }
 
+header .menu li{
+    display: inline-block;
+    margin-right: 18px;
+}
+
 header .phone{
     font-size: 20px;
     line-height: 20px;
     color: #333333;
     text-decoration: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
-header .collBack{
+header .phone:hover {
+    color: #1a9547;
+}
+
+header .callBack {
     font-size: 13px;
     line-height: 16px;
     text-decoration: none;
     color: #0069b4;
     border-bottom: 1px dashed  #0069b4;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header .callBack:hover {
+    border-bottom: 1px dashed transparent;
 }
 
 header p.timing{
@@ -65,10 +139,19 @@ header .basket{
     line-height: 22px;
     color: #333333;
     text-decoration: none;
-    display: block;
+    display: table;
+    margin-left: auto;
     padding-left: 28px;
     background-repeat: no-repeat;
     background-position: left center;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header .basket:hover {
+    color: #1a9547;
 }
 
 header .basket span{
@@ -87,11 +170,39 @@ header .login[class*=icon]{
     font-size: 13px;
 }
 
+.sale {
+    width: 305px;
+    height: 360px;
+}
+
+.slider {
+    width: 640px;
+    height: 360px;
+}
+
+.banner>div {
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.advantages {
+    width: calc(100% - 320px);
+    float: left;
+}
+
 .advantages .item span{
     font-size: 14px;
     line-height: 17px;
     font-weight: bold;
     color: #333333;
+    display: block;
 }
 
 .advantages .item p{
@@ -100,8 +211,16 @@ header .login[class*=icon]{
     color: #666666;
 }
 
+.advantages .item {
+    width: 25%;
+    float: left;
+}
+
 .subscribe{
+    padding: 20px;
+    width: 320px;
     background-color: #63b949;
+    float: left;
 }
 
 .subscribe label{
@@ -110,15 +229,26 @@ header .login[class*=icon]{
 }
 
 .subscribe input{
+    width: 100%;
+    border: none;
     font-size: 13px;
     line-height: 37px;
     color: #999999;
+}
+
+.subscribe input::placeholder {
+    font-size: 13px;
+    line-height: 37px;
+    color: #999999;
+    padding: 10px;
 }
 
 .subscribe button{
     background-color: #259c47;
 }
 .subscribe button{
+    display: table-cell;
+    vertical-align: middle;
     font-size: 13px;
     line-height: 37px;
     text-align: center;
@@ -128,19 +258,74 @@ header .login[class*=icon]{
 }
 
 .subscribe .wrap span{
+    display: table-cell;
+    vertical-align: middle;
     font-size: 12px;
+    padding-left: 17px;
     color: rgba(255, 255, 255, 0.5);
+}
+
+.subscribe .wrap {
+    display: table;
+    width: 100%;
 }
 
 .filter li{
     font-size: 13px;
     line-height: 16px;
     border-bottom: 1px dashed #666666;
+    display: inline-block;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.filter li:hover {
+    border-bottom: 1px dashed transparent;
+}
+
+.filter li+li {
+    margin-left: 20px;
 }
 
 .filter li a{
     text-decoration: none;
     color: #666666;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.card {
+    position: relative;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.status {
+    position: absolute;
+    display: block;
+    top: -3px;
+    left: -3px;
+    widows: 43;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.status.hit {
+    background-color: #6eddcc;
+}
+
+.status.discount {
+    background-color: #ffed03;
+}
+
+.status.new {
+    background-color: #78ec71;
 }
 
 .card .img{
@@ -155,6 +340,19 @@ header .login[class*=icon]{
     font-size: 15px;
     line-height: 22px;
     color: #333333;
+    display: block;
+}
+
+.card .content {
+    min-height: 110px;
+    position: relative;
+}
+
+.card .content .buy {
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    width: 100%;
 }
 
 .card a{
@@ -168,14 +366,18 @@ header .login[class*=icon]{
     font-weight: 600;
     line-height: 30px;
     color: #333333;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .card .price .old{
     font-size: 14px;
     font-weight: normal;
-    line-height: 16px;
+    line-height: 25px;
     color: #666666;
     text-decoration: line-through;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .card button{
@@ -186,6 +388,8 @@ header .login[class*=icon]{
     background-color: #ff7200;
     width: 100px;
     border: none;
+    display: block;
+    float: right;
 }
 
 .widgets h1{
@@ -219,6 +423,11 @@ header .login[class*=icon]{
     color: #999999;
 }
 
+.info .tabs li {
+    display: inline-block;
+    padding: 0px 15px;
+}
+
 .info .content{
     font-size: 12px;
     line-height: 18px;
@@ -227,6 +436,23 @@ header .login[class*=icon]{
 
 .info .title{
     text-transform: uppercase;
+    position: relative;
+    display: block;
+    padding-left: 25px;
+}
+
+.info .title::before {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-top: 5px solid #333333;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    margin-top: -3px;
 }
 
 footer{
@@ -289,4 +515,373 @@ footer .contacts a[class*=icon]{
     font-size: 13px;
     line-height: 22px;
     color: #0069b4;
+}
+
+.widgets .wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .footMenu {
+    width: 50%;
+    float: left;
+}
+
+footer .contacts {
+    width: 25%;
+    float: left;
+}
+
+footer .copyright {
+    width: 25%;
+    float: left;
+    text-align: right;
+}
+
+.footMenu .col {
+    width: 50%;
+    float: left;
+}
+
+/*оформление заказов*/
+
+.orderList {
+    padding-left: 40px;
+}
+
+.orderList label {
+    position: relative;
+    padding-left: 40px;
+    margin-left: -40px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #333333;
+}
+
+.radioBtn {
+    display: none;
+}
+
+.radioBtn:not(checked)+label::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #d4d4d4;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.radioBtn:not(checked)+label::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 8px;
+    height: 8px;
+    background-color: #51bf87;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.radioBtn:checked+label::before {
+    border-color: #51bf87;
+}
+
+.radioBtn:checked+label::after {
+    opacity: 1;
+}
+
+.radioBtn+label {
+    cursor: pointer;
+}
+
+.breadcrumbs a{
+    font-size: 12px;
+    line-height: 22px;
+    color: #999999;
+    text-decoration: none;
+}
+
+.clear::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.breadcrumbs li{
+    float: left;
+
+}
+
+.selectB1 label{
+    float: left;
+    width: 120px;
+}
+.selectB1 option{
+    float: left;
+    width: 200px;
+}
+
+.content h2{
+    font-size: 25px;
+    line-height: 22px;
+    color: #333333;
+    display: block;
+}
+
+.selectBl label{
+    font-size: 13px;
+    line-height: 22px;
+    color: #666666;
+}
+.selectBl option{
+    font-size: 13px;
+    line-height: 22px;
+    color: #333333;
+}
+.orderList label{
+    font-size: 13px;
+    line-height: 19px;
+    color: #333333;
+}
+
+.orderList li{
+    padding: 10px 0px;
+}
+.formBlock .text{
+    font-size: 15px;
+    line-height: 22px;
+    color: #666666;
+}
+.orderList p{
+    font-size: 12px;
+    line-height: 18px;
+    color: #666666;
+}
+.orderList .additionalService{
+    font-size: 12px;
+    line-height: 18px;
+    color: #f26522;
+}
+.content button{
+    font-size: 14px;
+    line-height: 22px;
+    color: #ffffff;
+    background-color: #f26522;
+    width: 190px;
+    height: 30px;
+    border: none;
+}
+
+.formBlock .text{
+    font-size: 15px;
+    line-height: 22px;
+    color: #333333;
+}
+.formBlock label{
+    font-size: 13px;
+    line-height: 22px;
+    font-style: italic;
+    color: #666666;
+
+}
+.formBlock input{
+    display: block;
+    border: 1px solid #d6d6d6;
+    width: 190px;
+}
+.formBlock textarea{
+    display: block;
+    border: 1px solid #d6d6d6;
+}
+.formBlock span{
+    font-size: 13px;
+    line-height: 22px;
+    font-style: italic;
+    color: #ed1c24;
+}
+.formBlock div{
+    display: inline-block;
+    padding: 10px 330px 10px 0;
+
+}
+.formBlock .text{
+    display: inline-block;
+    padding-right: 400px;
+}
+.clientWrap .left p {
+    font-size: 13px;
+    line-height: 22px;
+    color: #333333;
+}
+
+.clientWrap .left label {
+    font-size: 13px;
+    line-height: 22px;
+    color: #666666;
+}
+.formClient {
+    display: table;
+    width: 100%;
+    float: left;
+}
+
+.formClient .left {
+    display: block;
+    width: 25%;
+    float: left;
+}
+
+.formClient .right {
+    display: block;
+    width: 75%;
+    float: left;
+}
+
+.formClient input{
+    width: 280px;
+    border: 1px solid #d6d6d6;
+    display: block;
+}
+.formClient textarea{
+    width: 280px;
+    border: 1px solid #d6d6d6;
+    display: block;
+    height: 120px;
+}
+
+.formClient label{
+    font-style: italic;
+    font-size: 13px;
+    color: #666666;
+}
+
+.cfix span:nth-child(1){
+    font-style: normal;
+    font-size: 13px;
+}
+.cfix span:nth-child(3){
+    font-style: normal;
+    font-size: 11px;
+    color: #999999;
+}
+
+@media (max-width: 1199px) {
+    .container {
+        width: 980px;
+    }
+
+    .sale {
+        width: 295px;
+        height: 350px;
+    }
+
+    .slider {
+        width: 620px;
+        height: 350px;
+    }
+
+    .subscribe {
+        width: 300px;
+    }
+
+    .advantages {
+        width: calc(100% - 300px);
+    }
+
+    .widgets {
+        display: none;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        flex: 0 0 250px;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        width: 780px;
+    }
+}
+
+@media (max-width: 776px) {
+    .container  {
+        width: 100%;
+    }
+    header{
+        width: 100%;
+        height: 115px;
+        background-color: #63ba49;
+    }
+
+    header .left{
+        display: none;
+    }
+
+    header .logo img{
+        display: none;
+    }
+
+    header .logo{
+        background-image: url("../img/png/logo_mobile.png");
+    }
+
+    header .right{
+        display: none;
+    }
+
+    .banner{
+        display: none;
+    }
+
+    .advSab{
+        display: none;
+    }
+
+    .cards{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card{
+        display: block;
+        flex: 0 0 250px;
+    }
+
+    .widgets{
+        display: none;
+    }
+
+    .info{
+        display: none;
+    }
+
+    .accordion{
+        display: none;
+    }
+
 }
